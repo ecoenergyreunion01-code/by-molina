@@ -1,0 +1,19 @@
+=== METTRE LE SITE EN LIGNE ===
+Méthode la plus simple : Netlify Drop
+
+1. Ouvre https://app.netlify.com/drop dans ton navigateur
+2. Glisse le dossier "canape-demo" (sur le Bureau) dans la page
+3. Netlify te donne une URL du style : https://joli-nom.netlify.app
+4. Envoie ce lien à Stéphane — il clique et voit le site
+
+Pour rendre le site permanent :
+- Netlify demandera ton email après le drop
+- Tu créer un compte gratuit en 30 secondes
+- Le site reste en ligne indéfiniment
+
+=== PLUS TARD (production) ===
+Quand tu veux le mettre sur by-molina.re :
+1. Va sur https://vercel.com
+2. Crée un compte (gratuit)
+3. Importe le projet depuis GitHub
+4. Ajoute le domaine by-molina.re dans les paramètres
