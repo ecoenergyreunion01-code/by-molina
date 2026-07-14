@@ -41,19 +41,19 @@ export function AmbianceGrid() {
             variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0 } }}
             transition={{ duration: 0.5, ease: 'easeOut' }}
           >
-            <Link
-              href={`/collection?ambiance=${ambiance.slug}`}
-              className="group relative overflow-hidden bg-fond-fonce shadow-card hover:shadow-card-hover transition-shadow duration-500 block aspect-[4/5]"
-            >
-              <Image
-                src={imageAmbianceSafe(ambiance.slug)}
-                alt={ambiancesAlt[ambiance.slug] || ambiance.nom}
-                fill
-                className="object-cover transition-all duration-700 group-hover:scale-110"
-                loading="lazy"
-                sizes="(max-width: 640px) 100vw, 25vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent transition-opacity duration-500 group-hover:opacity-90 pointer-events-none" />
+              <Link
+                href={`/collection?ambiance=${ambiance.slug}`}
+                className="group relative overflow-hidden bg-fond-fonce shadow-card hover:shadow-card-hover transition-shadow duration-500 block aspect-[4/5] flex items-center justify-center"
+              >
+                <Image
+                  src={imageAmbianceSafe(ambiance.slug)}
+                  alt={ambiancesAlt[ambiance.slug] || ambiance.nom}
+                  fill
+                  className="object-contain transition-all duration-700 scale-95 group-hover:scale-100"
+                  loading="lazy"
+                  sizes="(max-width: 640px) 100vw, 25vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent transition-opacity duration-500 group-hover:opacity-90 pointer-events-none" />
               <div className="absolute bottom-0 left-0 right-0 p-6">
                 <div
                   className="w-8 h-0.5 mb-3 transition-all duration-500 group-hover:w-16"

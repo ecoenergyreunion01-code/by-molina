@@ -38,12 +38,12 @@ export function FamillesGrid() {
               href={`/collection?famille=${famille.value}`}
               className="group block bg-fond-fonce overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-500"
             >
-              <div className="relative aspect-[4/3] overflow-hidden">
+              <div className="relative aspect-[4/3] sm:aspect-[3/2] overflow-hidden bg-fond-fonce flex items-center justify-center">
                 <Image
                   src={imageFamilleSafe(famille.value)}
                   alt={famille.label}
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="object-contain scale-95 transition-transform duration-700 group-hover:scale-100"
                   loading="lazy"
                   sizes="(max-width: 768px) 50vw, 33vw"
                 />

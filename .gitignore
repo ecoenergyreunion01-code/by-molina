@@ -6,3 +6,6 @@ node_modules/
 next-env.d.ts
 SESSION_LOG.md
 restore_photos.py
+
+# Local Netlify folder
+.netlify
