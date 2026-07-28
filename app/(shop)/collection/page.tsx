@@ -8,9 +8,9 @@ import type { Metadata } from 'next'
 export async function generateMetadata({
   searchParams,
 }: {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+  searchParams: { [key: string]: string | string[] | undefined }
 }): Promise<Metadata> {
-  const params = await searchParams
+  const params = searchParams
   const ambiance = typeof params.ambiance === 'string' ? params.ambiance : undefined
   const famille = typeof params.famille === 'string' ? params.famille : undefined
 
@@ -31,9 +31,9 @@ export async function generateMetadata({
 export default async function CollectionPage({
   searchParams,
 }: {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+  searchParams: { [key: string]: string | string[] | undefined }
 }) {
-  const params = await searchParams
+  const params = searchParams
   const ambiance = typeof params.ambiance === 'string' ? params.ambiance : undefined
   const famille = typeof params.famille === 'string' ? params.famille : undefined
 

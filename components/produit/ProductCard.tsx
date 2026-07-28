@@ -24,7 +24,7 @@ export function ProductCard({
       href={`/produit/${produit.slug}`}
       className="group block active:scale-[0.97] transition-transform duration-200 h-full"
     >
-      <div className="bg-fond-fonce mb-3 overflow-hidden shadow-card group-hover:shadow-card-hover transition-all duration-500 max-h-[480px] flex items-center justify-center">
+      <div className="relative bg-fond-fonce mb-3 overflow-hidden shadow-card group-hover:shadow-card-hover transition-all duration-500 max-h-[480px] flex items-center justify-center">
         <Image
           src={imageProduitSafe(produit.slug, 0, couleur)}
           alt={altProduit(produit.slug, 0) || produit.nom}

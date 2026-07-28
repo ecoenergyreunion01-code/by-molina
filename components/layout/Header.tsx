@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import { AnimatePresence, motion } from 'framer-motion'
 import { usePanier } from '@/lib/panier/context'
@@ -15,7 +15,11 @@ const SearchOverlay = dynamic(() => import('./SearchOverlay').then((m) => m.Sear
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [hydrated, setHydrated] = useState(false)
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null)
   const { nbArticles } = usePanier()
+
+  useEffect(() => { setHydrated(true) }, [])
 
   return (
     <header className="sticky top-0 z-40 bg-fond/90 backdrop-blur-md border-b border-[#EFEBE9]">
@@ -25,15 +29,30 @@ export function Header() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
+          <Link href="/" className="text-xs tracking-[0.2em] uppercase text-texte-secondaire hover:text-texte transition-colors duration-300">
+            Accueil
+          </Link>
           <Link href="/collection" className="text-xs tracking-[0.2em] uppercase text-texte-secondaire hover:text-texte transition-colors duration-300">
             Collection
           </Link>
 
           <div className="relative group">
-            <span className="text-xs tracking-[0.2em] uppercase text-texte-secondaire cursor-default hover:text-texte transition-colors duration-300">
+            <button
+              type="button"
+              className="text-xs tracking-[0.2em] uppercase text-texte-secondaire hover:text-texte transition-colors duration-300"
+              onClick={() => setOpenDropdown(openDropdown === 'modeles' ? null : 'modeles')}
+              onMouseEnter={() => setOpenDropdown('modeles')}
+              onMouseLeave={() => setOpenDropdown(null)}
+            >
               Nos modèles
-            </span>
-            <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-56 bg-fond border border-[#EFEBE9] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-lg">
+            </button>
+            <div
+              className={`absolute top-full left-1/2 -translate-x-1/2 mt-3 w-56 bg-fond border border-[#EFEBE9] transition-all duration-200 shadow-lg ${
+                openDropdown === 'modeles' ? 'opacity-100 visible' : 'opacity-0 invisible'
+              }`}
+              onMouseEnter={() => setOpenDropdown('modeles')}
+              onMouseLeave={() => setOpenDropdown(null)}
+            >
               {famillesProduit.map((f) => (
                 <Link
                   key={f.value}
@@ -55,10 +74,22 @@ export function Header() {
           </Link>
 
           <div className="relative group">
-            <span className="text-xs tracking-[0.2em] uppercase text-texte-secondaire cursor-default hover:text-texte transition-colors duration-300">
+            <button
+              type="button"
+              className="text-xs tracking-[0.2em] uppercase text-texte-secondaire hover:text-texte transition-colors duration-300"
+              onClick={() => setOpenDropdown(openDropdown === 'ambiances' ? null : 'ambiances')}
+              onMouseEnter={() => setOpenDropdown('ambiances')}
+              onMouseLeave={() => setOpenDropdown(null)}
+            >
               Ambiances
-            </span>
-            <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-48 bg-fond border border-[#EFEBE9] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-lg">
+            </button>
+            <div
+              className={`absolute top-full left-1/2 -translate-x-1/2 mt-3 w-48 bg-fond border border-[#EFEBE9] transition-all duration-200 shadow-lg ${
+                openDropdown === 'ambiances' ? 'opacity-100 visible' : 'opacity-0 invisible'
+              }`}
+              onMouseEnter={() => setOpenDropdown('ambiances')}
+              onMouseLeave={() => setOpenDropdown(null)}
+            >
               {ambiancesNav.map((a) => (
                 <Link
                   key={a.slug}
@@ -82,7 +113,7 @@ export function Header() {
             <svg width="20" height="20" viewBox="0 0 22 20" fill="none" className="text-texte">
               <path d="M11 18L3.5 12.5C1.5 10.8 1 7.5 3 5C4.5 3 7 2.5 9 4L11 6L13 4C15 2.5 17.5 3 19 5C21 7.5 20.5 10.8 18.5 12.5L11 18Z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" />
             </svg>
-            {nbArticles > 0 && (
+            {hydrated && nbArticles > 0 && (
               <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-texte text-fond text-[11px] font-medium flex items-center justify-center">
                 {nbArticles > 99 ? '99+' : nbArticles}
               </span>
@@ -120,6 +151,9 @@ export function Header() {
             className="md:hidden border-t border-[#EFEBE9] bg-fond max-h-[80vh] overflow-y-auto"
           >
             <div className="px-6 py-6 space-y-1">
+              <Link href="/" className="flex min-h-touch items-center text-sm tracking-wider uppercase font-medium hover:opacity-70 transition-opacity" onClick={() => setMenuOpen(false)}>
+                Accueil
+              </Link>
               <Link href="/collection" className="flex min-h-touch items-center text-sm tracking-wider uppercase font-medium hover:opacity-70 transition-opacity" onClick={() => setMenuOpen(false)}>
                 Collection
               </Link>

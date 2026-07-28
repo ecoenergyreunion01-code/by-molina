@@ -96,22 +96,30 @@ export default function PanierPage() {
         </div>
         <p className="text-xs text-texte-gris mb-6">Livraison offerte à partir de 99€</p>
         <Button variant="primary" fullWidth taille="lg" onClick={async () => {
-          const stripeModule = await import('@stripe/stripe-js').catch(() => null)
-          const stripe = stripeModule
-            ? await stripeModule.loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!)
-            : null
-          const { creerSessionCheckout } = await import('@/lib/stripe/client')
-          const data = await creerSessionCheckout(items.map(i => ({
-            produitId: i.produitId,
-            nom: i.nom,
-            prix: i.prix,
-            quantite: i.quantite,
-            image: i.image,
-          })))
-          if (stripe && data.url?.startsWith('https://checkout.stripe.com')) {
-            await stripe.redirectToCheckout(data.url.split('/').pop()!)
-          } else {
-            window.location.href = data.url || '/panier/merci'
+          try {
+            const stripeModule = await import('@stripe/stripe-js').catch(() => null)
+            const stripe = stripeModule
+              ? await stripeModule.loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!)
+              : null
+            const { creerSessionCheckout } = await import('@/lib/stripe/client')
+            const data = await creerSessionCheckout(items.map(i => ({
+              produitId: i.produitId,
+              nom: i.nom,
+              prix: i.prix,
+              quantite: i.quantite,
+              image: i.image,
+            })))
+            if (data.error) {
+              alert(data.error)
+              return
+            }
+            if (stripe && data.url?.startsWith('https://checkout.stripe.com')) {
+              await stripe.redirectToCheckout(data.url.split('/').pop()!)
+            } else {
+              window.location.href = data.url || '/panier/merci'
+            }
+          } catch {
+            alert('Impossible de contacter le serveur. Réessayez plus tard.')
           }
         }}>
           Commander

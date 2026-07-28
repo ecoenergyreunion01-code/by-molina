@@ -10,17 +10,18 @@ export function CoupDeCoeur() {
   const coupsDeCoeur = getCoupsDeCoeur()
 
   return (
-    <section className="bg-fond-fonce py-20">
+    <section className="py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
-        <div className="text-center mb-12">
+        <div className="text-center mb-14">
           <p className="text-sm tracking-[0.3em] uppercase text-texte-gris mb-4 font-medium">
-            Sélection
-          </p>
-          <h2 className="font-display text-fluid-2xl mb-3">
             Nos modèles phares
+          </p>
+          <h2 className="font-display text-fluid-2xl lg:text-fluid-3xl mb-3 text-balance">
+            Découvrez la collection
           </h2>
           <p className="text-texte-secondaire text-fluid-sm max-w-lg mx-auto">
-            Toute la collection By Molina.
+            Canapés et fauteuils d&apos;exception, disponibles dans 50+ coloris.
+            Tous nos modèles sont visibles dans notre showroom.
           </p>
         </div>
 
@@ -38,7 +39,7 @@ export function CoupDeCoeur() {
               transition={{ duration: 0.5, ease: 'easeOut' }}
             >
               <Link href={`/produit/${item.slug}`} className="group block">
-                <div className="overflow-hidden bg-fond-fonce mb-4 shadow-card group-hover:shadow-card-hover transition-shadow duration-500 max-h-[480px] flex items-center justify-center">
+                <div className="relative overflow-hidden bg-fond-fonce mb-4 shadow-card group-hover:shadow-card-hover transition-shadow duration-500 max-h-[480px] flex items-center justify-center">
                   <Image
                     src={imageProduitSafe(item.slug, 0, item.couleurs?.[0]?.hex)}
                     alt={altProduit(item.slug, 0) || item.nom}
@@ -60,6 +61,15 @@ export function CoupDeCoeur() {
             </motion.div>
           ))}
         </motion.div>
+
+        <div className="text-center mt-12">
+          <Link
+            href="/collection"
+            className="inline-flex min-h-touch items-center justify-center px-8 border border-texte text-texte text-xs tracking-wider uppercase font-medium hover:bg-texte hover:text-fond transition-all rounded-sm"
+          >
+            Voir toute la collection
+          </Link>
+        </div>
       </div>
     </section>
   )

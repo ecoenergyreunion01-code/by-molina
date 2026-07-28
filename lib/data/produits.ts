@@ -117,6 +117,7 @@ export const tousLesProduits: Produit[] = [
     ambiances: ['Bohème', 'Cocooning'],
     famille: 'fauteuil' as FamilleProduit,
     fabricType: 'velours-lisse' as const,
+    fabricRef: 'VL',
   })),
 ]
 
@@ -129,9 +130,9 @@ export function getProduitsByFamille(famille: FamilleProduit): Produit[] {
 }
 
 export function getProduitsByAmbiance(ambianceSlug: string): Produit[] {
-  const slug = ambianceSlug.toLowerCase()
+  const slug = ambianceSlug.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
   return tousLesProduits.filter((p) =>
-    p.ambiances?.some((a) => a.toLowerCase().includes(slug))
+    p.ambiances?.some((a) => a.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(slug))
   )
 }
 

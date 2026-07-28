@@ -11,14 +11,14 @@ export const largeursOptions = [
 ]
 
 export const couleursOptions = [
-  { nom: 'Beige & Lin', hex: '#D4C5A9' },
-  { nom: 'Gris', hex: '#8A8A8A' },
-  { nom: 'Vert', hex: '#5B7B5A' },
-  { nom: 'Bleu', hex: '#6B8E9E' },
-  { nom: 'Terracotta', hex: '#C17060' },
-  { nom: 'Rose', hex: '#D4A5A5' },
-  { nom: 'Blanc', hex: '#F2EFE8' },
-  { nom: 'Noir & Foncé', hex: '#1A1A1A' },
+  { nom: 'Beige & Lin', hex: '#D4C5A9', couleurNoms: ['Beige', 'Taupe', 'Sable', 'Beige rosé', 'Lin'] },
+  { nom: 'Gris', hex: '#8A8A8A', couleurNoms: ['Gris', 'Gris-bleuté', 'Gris foncé'] },
+  { nom: 'Vert', hex: '#5B7B5A', couleurNoms: ['Vert', 'Vert foncé', 'Kaki', 'Vert sapin', 'Vert forêt', 'Vert olive'] },
+  { nom: 'Bleu', hex: '#6B8E9E', couleurNoms: ['Bleu', 'Bleu marine', 'Bleu-bleuté'] },
+  { nom: 'Terracotta', hex: '#C17060', couleurNoms: ['Terracotta', 'Terre', 'Ocre'] },
+  { nom: 'Rose', hex: '#D4A5A5', couleurNoms: ['Rose', 'Rose poudré', 'Beige rosé'] },
+  { nom: 'Blanc', hex: '#F2EFE8', couleurNoms: ['Blanc', 'Blanc cassé', 'Crème'] },
+  { nom: 'Noir & Foncé', hex: '#1A1A1A', couleurNoms: ['Anthracite', 'Noir', 'Marron', 'Gris foncé'] },
 ]
 
 export const fabricTypeOptions = [

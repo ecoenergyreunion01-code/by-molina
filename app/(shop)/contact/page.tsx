@@ -13,9 +13,9 @@ export const metadata: Metadata = {
 export default async function ContactPage({
   searchParams,
 }: {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+  searchParams: { [key: string]: string | string[] | undefined }
 }) {
-  const params = await searchParams
+  const params = searchParams
   const produit = typeof params.produit === 'string' ? params.produit : undefined
 
   return (

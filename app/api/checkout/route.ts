@@ -27,8 +27,7 @@ export async function POST(request: Request) {
     const stripe = await getStripe()
 
     if (!stripe) {
-      // Mode démo : pas de Stripe installé, on simule
-      return NextResponse.json({ url: '/panier/merci' })
+      return NextResponse.json({ error: 'Stripe non configuré. Contactez-nous pour passer commande.', demo: true }, { status: 503 })
     }
 
     const session = await stripe.checkout.sessions.create({

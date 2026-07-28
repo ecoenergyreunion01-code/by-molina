@@ -44,8 +44,6 @@ export function SearchOverlay() {
     }
   }, [open])
 
-  const [searching, setSearching] = useState(false)
-
   const results = useMemo(() => {
     if (!debouncedQuery) return tousLesProduits
     const q = debouncedQuery.toLowerCase()
@@ -58,28 +56,6 @@ export function SearchOverlay() {
         p.materiaux?.toLowerCase().includes(q) ||
         getFamilleLabel(p.famille as FamilleProduit).toLowerCase().includes(q)
     )
-  }, [debouncedQuery])
-
-  useEffect(() => {
-    if (!debouncedQuery) return
-    let cancelled = false
-    setSearching(true)
-    import('@/lib/meilisearch/client')
-      .then(({ rechercherProduits }) =>
-        rechercherProduits(debouncedQuery)
-          .then((res) => {
-            if (!cancelled && res.hits.length > 0) {
-              console.debug(`Meilisearch : ${res.hits.length} résultats pour "${debouncedQuery}"`)
-            }
-          })
-          .catch(() => {})
-          .finally(() => {
-            if (!cancelled) setSearching(false)
-          })
-      )
-    return () => {
-      cancelled = true
-    }
   }, [debouncedQuery])
 
   return (
@@ -117,10 +93,8 @@ export function SearchOverlay() {
             </div>
 
             <div className="overflow-y-auto flex-1 p-2 scrollbar-thin">
-              {results.length === 0 && !searching ? (
+              {results.length === 0 ? (
                 <p className="text-sm text-texte-gris text-center py-8">Aucun résultat</p>
-              ) : results.length === 0 && searching ? (
-                <p className="text-sm text-texte-gris text-center py-8">Recherche en cours...</p>
               ) : (
                 <div className="space-y-1">
                   {results.map((p) => (

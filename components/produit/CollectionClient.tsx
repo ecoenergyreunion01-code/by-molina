@@ -50,7 +50,7 @@ export function CollectionClient({
     if (ambiance) {
       const slug = ambiance.toLowerCase()
       result = result.filter((p) =>
-        p.ambiances?.some((a) => a.toLowerCase().includes(slug))
+        p.ambiances?.some((a) => a.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(slug.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()))
       )
     }
 
@@ -70,8 +70,11 @@ export function CollectionClient({
     }
 
     if (etat.selectedCouleurs.length > 0) {
+      const selectedNoms = couleursOptions
+        .filter((c) => etat.selectedCouleurs.includes(c.hex))
+        .flatMap((c) => c.couleurNoms.map((n) => n.toLowerCase()))
       result = result.filter((p) =>
-        p.couleurs?.some((c) => etat.selectedCouleurs.includes(c.hex))
+        p.couleurs?.some((c) => selectedNoms.some((n) => c.nom.toLowerCase().includes(n)))
       )
     }
 

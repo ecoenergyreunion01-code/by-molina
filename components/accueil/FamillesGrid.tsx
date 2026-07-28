@@ -11,13 +11,13 @@ export function FamillesGrid() {
     <section className="mx-auto max-w-7xl px-4 py-20 lg:px-8">
       <div className="text-center mb-12">
         <p className="text-sm tracking-[0.3em] uppercase text-texte-gris mb-4 font-medium">
-          Parcourir
+          Nos modèles
         </p>
         <h2 className="font-display text-fluid-2xl mb-3">
           Trouvez votre silhouette
         </h2>
         <p className="text-texte-secondaire text-fluid-sm max-w-lg mx-auto">
-          Du bloc modulaire à l&apos;angle chaise longue — explorez par famille.
+          Du bloc modulaire au fauteuil lounge — explorez par famille. Tous nos modèles sont visibles au showroom.
         </p>
       </div>
 

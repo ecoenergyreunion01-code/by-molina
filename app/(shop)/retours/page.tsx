@@ -1,3 +1,4 @@
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -8,6 +9,7 @@ export const metadata: Metadata = {
 export default function RetoursPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-16 lg:px-8">
+      <Breadcrumbs items={[{ label: 'Retours' }]} />
       <h1 className="font-display text-fluid-3xl mb-6">Retours</h1>
       <div className="space-y-6 text-texte-secondaire text-fluid-base leading-relaxed">
         <section>
