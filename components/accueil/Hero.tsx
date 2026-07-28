@@ -58,30 +58,32 @@ export function Hero() {
 
           {/* Contenu mobile */}
           <div className="sm:hidden absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-transparent" />
-          <div className="sm:hidden absolute bottom-0 left-0 right-0 p-5">
-            <p className="text-xs tracking-[0.3em] uppercase text-white/80 mb-2 font-medium drop-shadow-md">
-              Showroom — La Réunion
-            </p>
-            <h1 className="font-display text-fluid-2xl text-white mb-2 text-balance leading-tight drop-shadow-lg">
-              L&apos;art de vivre à La Réunion
-            </h1>
-            <p className="text-white/90 text-sm mb-4 leading-relaxed drop-shadow-md">
-              Canapés d&apos;exception pour intérieurs tropicaux. Sur rendez-vous.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <Link
-                href="/contact"
-                className="inline-flex min-h-touch items-center justify-center px-6 bg-white text-texte text-xs tracking-wider uppercase font-medium hover:bg-white/90 transition-all rounded-sm shadow-lg"
-              >
-                Rendez-vous
-              </Link>
-              <Link
-                href="/collection"
-                className="inline-flex min-h-touch items-center justify-center px-6 border border-white/60 text-white text-xs tracking-wider uppercase font-medium hover:bg-white/10 transition-all rounded-sm drop-shadow-md"
-              >
-                Collection
-              </Link>
-            </div>
+        </div>
+
+        {/* Texte mobile — sous l'image, fond propre */}
+        <div className="sm:hidden bg-fond px-5 py-8">
+          <p className="text-xs tracking-[0.3em] uppercase text-texte-gris mb-2 font-medium">
+            Showroom — La Réunion
+          </p>
+          <h1 className="font-display text-fluid-2xl text-texte mb-3 text-balance leading-tight">
+            L&apos;art de vivre à La Réunion
+          </h1>
+          <p className="text-texte-secondaire text-sm mb-5 leading-relaxed">
+            Canapés d&apos;exception pour intérieurs tropicaux. Sur rendez-vous.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link
+              href="/contact"
+              className="inline-flex min-h-touch items-center justify-center px-6 bg-texte text-fond text-xs tracking-wider uppercase font-medium hover:opacity-90 transition-all rounded-sm"
+            >
+              Rendez-vous
+            </Link>
+            <Link
+              href="/collection"
+              className="inline-flex min-h-touch items-center justify-center px-6 border border-texte text-texte text-xs tracking-wider uppercase font-medium hover:bg-texte hover:text-fond transition-all rounded-sm"
+            >
+              Collection
+            </Link>
           </div>
         </div>
       </div>
