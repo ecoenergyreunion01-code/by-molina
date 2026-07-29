@@ -11,52 +11,84 @@ export function Hero() {
   return (
     <section className="bg-fond">
       <div className="mx-auto max-w-7xl px-4 lg:px-8 pt-6 sm:pt-12">
-        <div className="grid sm:grid-cols-2 bg-fond-clair shadow-lg overflow-hidden">
-          {/* Côté texte */}
-          <div className="flex flex-col justify-center p-6 sm:p-10 lg:p-14 order-2 sm:order-1">
-            <p className="text-xs tracking-[0.3em] uppercase text-texte-gris mb-3 font-medium">
-              Showroom à La Réunion
-            </p>
-            <h1 className="font-display text-fluid-3xl lg:text-fluid-4xl text-texte mb-4 text-balance leading-tight">
-              L&apos;art de vivre à La Réunion
-            </h1>
-            <p className="text-texte-secondaire text-fluid-sm mb-6 max-w-md leading-relaxed">
-              Canapés et fauteuils d&apos;exception, conçus pour les intérieurs tropicaux.
-              Venez découvrir nos modèles dans notre showroom — sur rendez-vous.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <Link
-                href="/contact"
-                className="inline-flex min-h-touch items-center justify-center px-8 bg-texte text-fond text-xs tracking-wider uppercase font-medium hover:opacity-90 transition-all rounded-sm"
-              >
-                Prendre rendez-vous
-              </Link>
-              <Link
-                href="/collection"
-                className="inline-flex min-h-touch items-center justify-center px-8 border border-texte text-texte text-xs tracking-wider uppercase font-medium hover:bg-texte hover:text-fond transition-all rounded-sm"
-              >
-                Voir la collection
-              </Link>
+        <div className="relative bg-fond-fonce shadow-lg overflow-hidden">
+          <Image
+            src={imgSrc}
+            alt={altHero}
+            width={1400}
+            height={800}
+            className="w-full h-auto"
+            priority
+            sizes="100vw"
+            onError={() => setImgSrc(imagesHeroFallback)}
+          />
+
+          {/* Gradient overlay — plus fort en bas pour la carte */}
+          <div className="hidden sm:block absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 via-40% to-transparent" />
+
+          {/* Carte desktop — bas gauche */}
+          <div className="hidden sm:block absolute bottom-0 left-0 right-0 p-8 lg:p-14">
+            <div className="bg-black/30 backdrop-blur-sm rounded-sm p-6 lg:p-8 max-w-xl border-l-2 border-white/20">
+              <p className="text-xs tracking-[0.3em] uppercase text-white/70 mb-3 font-medium">
+                Showroom à La Réunion
+              </p>
+              <h1 className="font-display text-fluid-3xl lg:text-fluid-4xl text-white mb-3 text-balance leading-tight">
+                L&apos;art de vivre<br />à La Réunion
+              </h1>
+              <p className="text-white/80 text-fluid-sm mb-6 max-w-md leading-relaxed">
+                Canapés et fauteuils d&apos;exception, conçus pour les intérieurs tropicaux.
+                Venez découvrir nos modèles dans notre showroom — sur rendez-vous.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  href="/contact"
+                  className="inline-flex min-h-touch items-center justify-center px-8 bg-white text-texte text-xs tracking-wider uppercase font-medium hover:bg-white/90 transition-all rounded-sm"
+                >
+                  Prendre rendez-vous
+                </Link>
+                <Link
+                  href="/collection"
+                  className="inline-flex min-h-touch items-center justify-center px-8 border border-white/60 text-white text-xs tracking-wider uppercase font-medium hover:bg-white/10 transition-all rounded-sm"
+                >
+                  Voir la collection
+                </Link>
+              </div>
             </div>
           </div>
 
-          {/* Côté image */}
-          <div className="relative order-1 sm:order-2">
-            <Image
-              src={imgSrc}
-              alt={altHero}
-              width={700}
-              height={700}
-              className="w-full h-full object-cover"
-              priority
-              sizes="(max-width: 640px) 100vw, 50vw"
-              onError={() => setImgSrc(imagesHeroFallback)}
-            />
+          {/* Mobile */}
+          <div className="sm:hidden absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+          <div className="sm:hidden absolute bottom-0 left-0 right-0 p-5">
+            <div className="bg-black/30 backdrop-blur-sm rounded-sm p-5 border-l-2 border-white/20">
+              <p className="text-xs tracking-[0.3em] uppercase text-white/70 mb-2 font-medium">
+                Showroom — La Réunion
+              </p>
+              <h1 className="font-display text-fluid-2xl text-white mb-2 text-balance leading-tight">
+                L&apos;art de vivre à La Réunion
+              </h1>
+              <p className="text-white/85 text-sm mb-4 leading-relaxed">
+                Canapés d&apos;exception pour intérieurs tropicaux. Sur rendez-vous.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  href="/contact"
+                  className="inline-flex min-h-touch items-center justify-center px-6 bg-white text-texte text-xs tracking-wider uppercase font-medium hover:bg-white/90 transition-all rounded-sm"
+                >
+                  Rendez-vous
+                </Link>
+                <Link
+                  href="/collection"
+                  className="inline-flex min-h-touch items-center justify-center px-6 border border-white/60 text-white text-xs tracking-wider uppercase font-medium hover:bg-white/10 transition-all rounded-sm"
+                >
+                  Collection
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Bandeau confiance simplifié — 2 colonnes */}
+      {/* Bandeau confiance */}
       <div className="mx-auto max-w-7xl px-4 lg:px-8 pb-8">
         <div className="grid grid-cols-2 md:grid-cols-4 text-center py-5 border-t border-[#EFEBE9]">
           <p className="text-xs tracking-wider uppercase text-texte-secondaire font-medium">Livraison La Réunion</p>
