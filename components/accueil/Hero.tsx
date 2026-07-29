@@ -9,115 +9,60 @@ export function Hero() {
   const [imgSrc, setImgSrc] = useState(imagesHero)
 
   return (
-    <section className="relative bg-fond-fonce overflow-hidden">
+    <section className="bg-fond">
       <div className="mx-auto max-w-7xl px-4 lg:px-8 pt-6 sm:pt-12">
-        <div className="relative bg-fond-clair shadow-lg overflow-hidden">
-          <Image
-            src={imgSrc}
-            alt={altHero}
-            width={1400}
-            height={900}
-            className="w-full h-auto animate-[scale-in_8s_ease-out_forwards]"
-            priority
-            sizes="100vw"
-            onError={() => setImgSrc(imagesHeroFallback)}
-          />
-
-          {/* Gradient localisé — bas gauche desktop */}
-          <div className="hidden sm:block absolute inset-0 bg-gradient-to-t from-black/60 via-black/25 to-transparent" />
-
-          {/* Contenu desktop — ancré en bas à gauche */}
-          <div className="hidden sm:block absolute bottom-0 left-0 right-0 p-8 lg:p-14">
-            <div className="max-w-xl">
-              <p className="text-xs tracking-[0.3em] uppercase text-white/80 mb-3 font-medium drop-shadow-md">
-                Showroom à La Réunion
-              </p>
-              <h1 className="font-display text-fluid-3xl lg:text-fluid-4xl text-white mb-4 text-balance leading-tight drop-shadow-lg">
-                L&apos;art de vivre<br />à La Réunion
-              </h1>
-              <p className="text-white/90 text-fluid-sm mb-6 max-w-md leading-relaxed drop-shadow-md">
-                Canapés et fauteuils d&apos;exception, conçus pour les intérieurs tropicaux.
-                Venez découvrir nos modèles dans notre showroom — sur rendez-vous.
-              </p>
-              <div className="flex flex-wrap gap-3">
-                <Link
-                  href="/contact"
-                  className="inline-flex min-h-touch items-center justify-center px-8 bg-white text-texte text-xs tracking-wider uppercase font-medium hover:bg-white/90 transition-all rounded-sm shadow-lg"
-                >
-                  Prendre rendez-vous
-                </Link>
-                <Link
-                  href="/collection"
-                  className="inline-flex min-h-touch items-center justify-center px-8 border border-white/60 text-white text-xs tracking-wider uppercase font-medium hover:bg-white/10 transition-all rounded-sm drop-shadow-md"
-                >
-                  Voir la collection
-                </Link>
-              </div>
+        <div className="grid sm:grid-cols-2 bg-fond-clair shadow-lg overflow-hidden">
+          {/* Côté texte */}
+          <div className="flex flex-col justify-center p-6 sm:p-10 lg:p-14 order-2 sm:order-1">
+            <p className="text-xs tracking-[0.3em] uppercase text-texte-gris mb-3 font-medium">
+              Showroom à La Réunion
+            </p>
+            <h1 className="font-display text-fluid-3xl lg:text-fluid-4xl text-texte mb-4 text-balance leading-tight">
+              L&apos;art de vivre à La Réunion
+            </h1>
+            <p className="text-texte-secondaire text-fluid-sm mb-6 max-w-md leading-relaxed">
+              Canapés et fauteuils d&apos;exception, conçus pour les intérieurs tropicaux.
+              Venez découvrir nos modèles dans notre showroom — sur rendez-vous.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href="/contact"
+                className="inline-flex min-h-touch items-center justify-center px-8 bg-texte text-fond text-xs tracking-wider uppercase font-medium hover:opacity-90 transition-all rounded-sm"
+              >
+                Prendre rendez-vous
+              </Link>
+              <Link
+                href="/collection"
+                className="inline-flex min-h-touch items-center justify-center px-8 border border-texte text-texte text-xs tracking-wider uppercase font-medium hover:bg-texte hover:text-fond transition-all rounded-sm"
+              >
+                Voir la collection
+              </Link>
             </div>
           </div>
 
-          {/* Contenu mobile */}
-          <div className="sm:hidden absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-transparent" />
-        </div>
-
-        {/* Texte mobile — sous l'image, fond propre */}
-        <div className="sm:hidden bg-fond px-5 py-8">
-          <p className="text-xs tracking-[0.3em] uppercase text-texte-gris mb-2 font-medium">
-            Showroom — La Réunion
-          </p>
-          <h1 className="font-display text-fluid-2xl text-texte mb-3 text-balance leading-tight">
-            L&apos;art de vivre à La Réunion
-          </h1>
-          <p className="text-texte-secondaire text-sm mb-5 leading-relaxed">
-            Canapés d&apos;exception pour intérieurs tropicaux. Sur rendez-vous.
-          </p>
-          <div className="flex flex-wrap gap-3">
-            <Link
-              href="/contact"
-              className="inline-flex min-h-touch items-center justify-center px-6 bg-texte text-fond text-xs tracking-wider uppercase font-medium hover:opacity-90 transition-all rounded-sm"
-            >
-              Rendez-vous
-            </Link>
-            <Link
-              href="/collection"
-              className="inline-flex min-h-touch items-center justify-center px-6 border border-texte text-texte text-xs tracking-wider uppercase font-medium hover:bg-texte hover:text-fond transition-all rounded-sm"
-            >
-              Collection
-            </Link>
+          {/* Côté image */}
+          <div className="relative order-1 sm:order-2">
+            <Image
+              src={imgSrc}
+              alt={altHero}
+              width={700}
+              height={700}
+              className="w-full h-full object-cover"
+              priority
+              sizes="(max-width: 640px) 100vw, 50vw"
+              onError={() => setImgSrc(imagesHeroFallback)}
+            />
           </div>
         </div>
       </div>
 
-      {/* Bandeau confiance */}
+      {/* Bandeau confiance simplifié — 2 colonnes */}
       <div className="mx-auto max-w-7xl px-4 lg:px-8 pb-8">
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-4 text-center py-5 border-t border-[#EFEBE9]">
-          <div>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#4A4A4A" strokeWidth="1.2" className="mx-auto mb-1.5">
-              <path d="M17 8H3M17 8C17 8 19 10 19 12V17H17V14H3V17H1V12C1 10 3 8 3 8M17 8V3H3V8" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            <p className="text-xs tracking-wider uppercase text-texte-secondaire font-medium">Livraison La Réunion</p>
-          </div>
-          <div>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#4A4A4A" strokeWidth="1.2" className="mx-auto mb-1.5">
-              <path d="M4 5L6 7L10 3" strokeLinecap="round" strokeLinejoin="round" />
-              <rect x="2" y="8" width="16" height="10" rx="1" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            <p className="text-xs tracking-wider uppercase text-texte-secondaire font-medium">Retour 30 jours</p>
-          </div>
-          <div>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#4A4A4A" strokeWidth="1.2" className="mx-auto mb-1.5">
-              <rect x="3" y="9" width="14" height="9" rx="1" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M6 9V6C6 3.8 7.8 2 10 2C12.2 2 14 3.8 14 6V9" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            <p className="text-xs tracking-wider uppercase text-texte-secondaire font-medium">Paiement sécurisé</p>
-          </div>
-          <div>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#4A4A4A" strokeWidth="1.2" className="mx-auto mb-1.5">
-              <circle cx="10" cy="7" r="4" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M3 18c0-3.9 3.1-7 7-7s7 3.1 7 7" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            <p className="text-xs tracking-wider uppercase text-texte-secondaire font-medium">Sur rendez-vous</p>
-          </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 text-center py-5 border-t border-[#EFEBE9]">
+          <p className="text-xs tracking-wider uppercase text-texte-secondaire font-medium">Livraison La Réunion</p>
+          <p className="text-xs tracking-wider uppercase text-texte-secondaire font-medium">Retour 30 jours</p>
+          <p className="text-xs tracking-wider uppercase text-texte-secondaire font-medium">Paiement sécurisé</p>
+          <p className="text-xs tracking-wider uppercase text-texte-secondaire font-medium">Sur rendez-vous</p>
         </div>
       </div>
     </section>

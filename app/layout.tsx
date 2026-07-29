@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Suspense } from 'react'
+import Link from 'next/link'
 import '@/styles/globals.css'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
@@ -40,7 +41,7 @@ export default function RootLayout({
       <body className="bg-fond min-h-screen antialiased">
         <PanierProvider>
           <Header />
-          <main>
+          <main className="pb-16 sm:pb-0">
             <Suspense fallback={
               <div className="min-h-[50vh] flex items-center justify-center">
                 <div className="w-8 h-8 border-2 border-texte/20 border-t-texte rounded-full animate-spin" />
@@ -50,6 +51,14 @@ export default function RootLayout({
             </Suspense>
           </main>
           <Footer />
+
+          {/* CTA flottant mobile */}
+          <Link
+            href="/contact"
+            className="fixed bottom-0 left-0 right-0 z-50 sm:hidden bg-texte text-fond text-center text-xs tracking-wider uppercase font-medium py-4 hover:opacity-90 transition-opacity"
+          >
+            Demander un devis
+          </Link>
         </PanierProvider>
       </body>
     </html>
