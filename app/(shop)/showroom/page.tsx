@@ -126,14 +126,14 @@ export default function ShowroomPage() {
             <div className="lg:col-span-3 order-1 lg:order-none">
               <div className="w-full aspect-[4/3] sm:aspect-[16/10] bg-fond rounded-sm overflow-hidden border border-[#EFEBE9]">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3757.5!2d55.23!3d-21.15!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDA5JzAwLjAiUyA1NcKwMTMnNDguMCJF!5e0!3m2!1sfr!2sre!4v1"
+                  src="https://www.google.com/maps?q=By+Molina+La+Réunion&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="By Molina Showroom — 7 Chemin Maurice Courtin, 97424 Saint-Leu"
+                  title="By Molina — Nos showrooms à La Réunion"
                 />
               </div>
             </div>
@@ -238,34 +238,48 @@ export default function ShowroomPage() {
         </div>
         <div className="grid sm:grid-cols-3 gap-6">
           {[
-            { nom: 'Saint-Leu', adresse: '7 E, 7 Chemin Maurice Courtin', cp: '97424 Saint-Leu', url: '7+E+7+Chemin+Maurice+Courtin+97424+Saint-Leu+La+Réunion' },
-            { nom: 'Saint-Denis', adresse: '33 rue Jean Chatel', cp: '97400 Saint-Denis', url: '33+rue+Jean+Chatel+97400+Saint-Denis+La+Réunion' },
-            { nom: 'Saint-Pierre', adresse: '12 rue Victor Le Vigoureux', cp: '97410 Saint-Pierre', url: '12+rue+Victor+Le+Vigoureux+97410+Saint-Pierre+La+Réunion' },
+            { nom: 'Saint-Leu', adresse: '7 E, 7 Chemin Maurice Courtin', cp: '97424 Saint-Leu', url: '7+E+7+Chemin+Maurice+Courtin+97424+Saint-Leu+La+Réunion', embed: 'https://www.google.com/maps?q=7+E,+7+Chemin+Maurice+Courtin,+97424+Saint-Leu,+La+Réunion&output=embed' },
+            { nom: 'Saint-Denis', adresse: '33 rue Jean Chatel', cp: '97400 Saint-Denis', url: '33+rue+Jean+Chatel+97400+Saint-Denis+La+Réunion', embed: 'https://www.google.com/maps?q=33+rue+Jean+Chatel,+97400+Saint-Denis,+La+Réunion&output=embed' },
+            { nom: 'Saint-Pierre', adresse: '12 rue Victor Le Vigoureux', cp: '97410 Saint-Pierre', url: '12+rue+Victor+Le+Vigoureux+97410+Saint-Pierre+La+Réunion', embed: 'https://www.google.com/maps?q=12+rue+Victor+Le+Vigoureux,+97410+Saint-Pierre,+La+Réunion&output=embed' },
           ].map((a) => (
             <div
               key={a.nom}
-              className="bg-fond-clair rounded-sm border border-[#EFEBE9] p-6 text-center"
+              className="bg-fond-clair rounded-sm border border-[#EFEBE9] overflow-hidden"
             >
-              <div className="inline-flex items-center justify-center w-10 h-10 bg-texte text-fond rounded-full mb-4">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M9 2C6.2 2 4 4.2 4 7c0 4 5 9 5 9s5-5 5-9c0-2.8-2.2-5-5-5z" />
-                  <circle cx="9" cy="7" r="2" />
-                </svg>
+              <div className="w-full aspect-[4/3] bg-fond">
+                <iframe
+                  src={a.embed}
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title={`Carte — ${a.nom}`}
+                />
               </div>
-              <p className="font-display text-lg mb-2">{a.nom}</p>
-              <p className="text-texte-secondaire text-sm leading-relaxed">
-                {a.adresse}<br />
-                {a.cp}<br />
-                La Réunion
-              </p>
-              <a
-                href={`https://www.google.com/maps/dir/?api=1&destination=${a.url}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex mt-4 text-xs tracking-wider uppercase text-texte hover:underline underline-offset-2 transition-colors"
-              >
-                Itinéraire
-              </a>
+              <div className="p-6 text-center">
+                <div className="inline-flex items-center justify-center w-10 h-10 bg-texte text-fond rounded-full mb-4">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M9 2C6.2 2 4 4.2 4 7c0 4 5 9 5 9s5-5 5-9c0-2.8-2.2-5-5-5z" />
+                    <circle cx="9" cy="7" r="2" />
+                  </svg>
+                </div>
+                <p className="font-display text-lg mb-2">{a.nom}</p>
+                <p className="text-texte-secondaire text-sm leading-relaxed">
+                  {a.adresse}<br />
+                  {a.cp}<br />
+                  La Réunion
+                </p>
+                <a
+                  href={`https://www.google.com/maps/dir/?api=1&destination=${a.url}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex mt-4 text-xs tracking-wider uppercase text-texte hover:underline underline-offset-2 transition-colors"
+                >
+                  Itinéraire
+                </a>
+              </div>
             </div>
           ))}
         </div>
