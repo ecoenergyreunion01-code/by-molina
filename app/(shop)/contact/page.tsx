@@ -17,6 +17,7 @@ export default async function ContactPage({
 }) {
   const params = searchParams
   const produit = typeof params.produit === 'string' ? params.produit : undefined
+  const modeles = typeof params.modeles === 'string' && params.modeles.trim() ? params.modeles.split(',').map((m) => m.trim()).filter(Boolean) : undefined
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-16 lg:px-8">
@@ -24,7 +25,7 @@ export default async function ContactPage({
       <p className="text-texte-secondaire text-fluid-base mb-10">
         Vous avez un coup de cœur&nbsp;? Racontez-nous votre projet et nous revenons vers vous sous 24h.
       </p>
-      <ContactForm produitInitial={produit} />
+      <ContactForm produitInitial={produit} modelesInitial={modeles} />
 
       <div className="mt-16 p-6 bg-fond-clair border border-[#EFEBE9] rounded-sm space-y-4">
         <div>
@@ -44,6 +45,11 @@ export default async function ContactPage({
             Préférez-vous voir les modèles en vrai&nbsp;? Prenez rendez-vous avec Stéphane pour découvrir
             nos canapés et fauteuils en showroom, toucher les tissus et trouver la couleur qui vous correspond.
           </p>
+          <ul className="mt-3 space-y-1 text-sm text-texte-secondaire">
+            <li>7 E, 7 Chemin Maurice Courtin — 97424 Saint-Leu</li>
+            <li>33 rue Jean Chatel — 97400 Saint-Denis</li>
+            <li>12 rue Victor Le Vigoureux — 97410 Saint-Pierre</li>
+          </ul>
         </div>
       </div>
     </div>

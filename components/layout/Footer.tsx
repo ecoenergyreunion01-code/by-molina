@@ -9,10 +9,11 @@ const footerLinks = {
     { label: 'Fauteuils', href: '/collection?famille=fauteuil' },
   ],
   decouvrir: [
-    { label: 'Notre showroom', href: '/contact' },
+    { label: 'Notre showroom', href: '/showroom' },
     { label: 'Nos tissus', href: '/materiaux' },
     { label: 'Notre savoir-faire', href: '/savoir-faire' },
     { label: 'Notre histoire', href: '/a-propos' },
+    { label: 'Questions fréquentes', href: '/faq' },
   ],
   pro: [
     { label: 'Devis professionnel', href: '/contact' },
@@ -39,7 +40,11 @@ export function Footer() {
                   <path d="M8 1C5.2 1 3 3.2 3 6c0 4 5 9 5 9s5-5 5-9c0-2.8-2.2-5-5-5z" />
                   <circle cx="8" cy="6" r="2" />
                 </svg>
-                <span>Showroom à La Réunion<br />Sur rendez-vous</span>
+                <span className="space-y-1 block">
+                  <span className="block">7 E, 7 Chemin Maurice Courtin<br />97424 Saint-Leu, La Réunion<br />Sur rendez-vous</span>
+                  <span className="block mt-2">33 rue Jean Chatel<br />97400 Saint-Denis, La Réunion</span>
+                  <span className="block mt-2">12 rue Victor Le Vigoureux<br />97410 Saint-Pierre, La Réunion</span>
+                </span>
               </div>
               <div className="flex items-start gap-3">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" className="mt-0.5 shrink-0">
@@ -63,7 +68,23 @@ export function Footer() {
                   <path d="M3 7h10M7 3v10" />
                 </svg>
                 <span>
-                  <a href="tel:+520692033553" className="hover:text-white transition-colors">06 92 03 35 53</a>
+                  <a href="tel:+262692033553" className="hover:text-white transition-colors">06 92 03 35 53</a>
+                </span>
+              </div>
+              <div className="flex items-start gap-3">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" className="mt-0.5 shrink-0">
+                  <path d="M2 3h12v9H4l-2 2z" />
+                  <path d="M5 8h6M5 6h2M5 10h4" />
+                </svg>
+                <span>
+                  <a
+                    href="https://wa.me/262692033553"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white transition-colors"
+                  >
+                    WhatsApp
+                  </a>
                 </span>
               </div>
             </div>
